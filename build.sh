@@ -3,6 +3,7 @@
 DEST_REPO=$1
 DEST_REPO_TOKEN=$2
 FILE_PATH=$3
+EMAIL=$4
 
 # Clone the destination repository
 
@@ -23,8 +24,8 @@ cp $FILE_PATH $DEST_REPO_NAME/stable/tutorials/$FILE_PATH
 cd $DEST_REPO_NAME
 
 # Set up git config
-# git config user.name "GitHub Action"
-# git config user.email "action@github.com"
+# git config user.name "AaronBrennan1"
+# git config user.email $EMAIL
 
 # Add, commit and push the file to the destination repository
 git add .
