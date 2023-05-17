@@ -33,5 +33,5 @@ jobs:
 
 
       - name: Sync with Destination Repo
-        run: ./build.sh AaronBrennan1/cobra_ghpages_dummy ${{ secrets.DEST_REPO_TOKEN }} ${{ steps.getfile.outputs.file }}
+        run: ./build.sh AaronBrennan1/cobra_ghpages_dummy ${{ secrets.DEST_REPO_TOKEN }} ${{ steps.getfile.outputs.file }} ${{ secrets.EMAIL }}
         if: steps.getfile.outputs.file != ''
