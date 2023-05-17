@@ -5,7 +5,8 @@ DEST_REPO_TOKEN=$2
 FILE_PATH=$3
 
 # Clone the destination repository
-git clone https://$DEST_REPO_TOKEN@github.com/$DEST_REPO.git
+
+git clone https://AaronBrennan1:$DEST_REPO_TOKENn@github.com/AaronBrennan1/cobra_ghpages_dummy.git
 
 # Split the destination repository into owner and name
 IFS='/' read -ra ADDR <<< "$DEST_REPO"
@@ -22,7 +23,8 @@ cp $FILE_PATH $DEST_REPO_NAME/stable/tutorials/$FILE_PATH
 cd $DEST_REPO_NAME
 
 # Set up git config
-git remote set-url origin https://AaronBrennan1:$DEST_REPO_TOKEN@github.com/AaronBrennan1/cobra_ghpages_dummy.git
+git config --local user.email "$GIT_EMAIL"
+git config --local user.name "$GIT_USERNAME"
 
 # Add, commit and push the file to the destination repository
 git add .
