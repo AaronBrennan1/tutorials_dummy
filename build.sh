@@ -22,8 +22,7 @@ cp $FILE_PATH $DEST_REPO_NAME/stable/tutorials/$FILE_PATH
 cd $DEST_REPO_NAME
 
 # Set up git config
-git config user.name "GitHub Action"
-git config user.email "action@github.com"
+git remote set-url origin https://AaronBrennan1:$DEST_REPO_TOKEN@github.com/AaronBrennan1/cobra_ghpages_dummy.git
 
 # Add, commit and push the file to the destination repository
 git add .
