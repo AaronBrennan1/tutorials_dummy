@@ -24,8 +24,8 @@ cp $FILE_PATH $DEST_REPO_NAME/stable/tutorials/$FILE_PATH
 cd $DEST_REPO_NAME
 
 # Set up git config
-# git config user.name "AaronBrennan1"
-# git config user.email $EMAIL
+git config user.name "AaronBrennan1"
+git config user.email $EMAIL
 
 # Add, commit and push the file to the destination repository
 git add .
