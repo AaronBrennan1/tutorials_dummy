@@ -20,7 +20,7 @@ jobs:
       - name: Find changed mlx files
         id: getfile
         run: |
-          echo "::set-output name=file::$(git diff --name-only HEAD~1 HEAD | grep '\.mlx')"
+          echo "::set-output name=file::$(git log -1 --name-only --pretty=format: "" | grep '\.mlx')"
 
       - name: Sync with Destination Repo
         run: ./build.sh AaronBrennan1/cobra_ghpages_dummy ${{ secrets.DEST_REPO_TOKEN }} ${{ steps.getfile.outputs.file }}
