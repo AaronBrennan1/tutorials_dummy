@@ -1,0 +1,43 @@
+name: Sync MLX Files
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+    - '**.mlx'
+
+jobs:
+  copy-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Repo
+        uses: actions/checkout@v2
+        with:
+          repository: 'source-owner/source-repo'
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout Destination Repo
+        uses: actions/checkout@v2
+        with:
+          repository: 'destination-owner/destination-repo'
+          token: ${{ secrets.DEST_REPO_TOKEN }}
+          path: destination-repo
+
+      - name: Find changed mlx files
+        id: getfile
+        run: |
+          echo "::set-output name=file::$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.mlx')"
+          
+      - name: Copy Files
+        run: |
+          cp ${{ steps.getfile.outputs.file }} destination-repo/stable/tutorials/
+        working-directory: ${{ github.workspace }}
+
+      - name: Push to Destination Repo
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "Sync mlx files from source repo" || echo "No changes to commit"
+          git push origin main
+        working-directory: ${{ github.workspace }}/destination-repo
