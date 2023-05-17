@@ -27,10 +27,11 @@ jobs:
         id: getfile
         run: |
           echo "::set-output name=file::$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.mlx')"
-          
+
       - name: Copy Files
         run: |
-          cp ${{ steps.getfile.outputs.file }} destination-repo/stable/tutorials/
+          mkdir -p "destination-repo/stable/tutorials/$(dirname "${{ steps.getfile.outputs.file }}")"
+          cp "${{ steps.getfile.outputs.file }}" "destination-repo/stable/tutorials/${{ steps.getfile.outputs.file }}"
         working-directory: ${{ github.workspace }}
 
       - name: Push to Destination Repo
@@ -41,3 +42,4 @@ jobs:
           git commit -m "Sync mlx files from source repo" || echo "No changes to commit"
           git push origin main
         working-directory: ${{ github.workspace }}/destination-repo
+
