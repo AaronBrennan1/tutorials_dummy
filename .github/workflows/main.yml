@@ -13,13 +13,13 @@ jobs:
       - name: Checkout Source Repo
         uses: actions/checkout@v2
         with:
-          repository: 'source-owner/source-repo'
+          repository: 'AaronBrennan1/tutorials_dummy'
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout Destination Repo
         uses: actions/checkout@v2
         with:
-          repository: 'destination-owner/destination-repo'
+          repository: 'AaronBrennan1/cobra_ghpages_dummy'
           token: ${{ secrets.DEST_REPO_TOKEN }}
           path: destination-repo
 
