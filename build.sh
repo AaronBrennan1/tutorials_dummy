@@ -28,4 +28,7 @@ git config user.email "action@github.com"
 # Add, commit and push the file to the destination repository
 git add .
 git commit -m "Sync mlx file from source repo" || echo "No changes to commit"
-git push origin main
+git push https://AaronBrennan1:$DEST_REPO_TOKEN@github.com/AaronBrennan1/cobra_ghpages_dummy.git
+
+
+
