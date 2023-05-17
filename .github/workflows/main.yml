@@ -26,13 +26,7 @@ jobs:
       - name: Find changed mlx files
         id: getfile
         run: |
-          git diff --name-only HEAD~1 HEAD
-          FILES=$(git diff --name-only HEAD~1 HEAD | grep '\.mlx')
-          echo $FILES
-          echo "::set-output name=file::$FILES"
-
-
-
+          echo "::set-output name=file::$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.mlx')"
 
       - name: Copy Files
         run: |
@@ -48,4 +42,3 @@ jobs:
           git commit -m "Sync mlx files from source repo" || echo "No changes to commit"
           git push origin main
         working-directory: ${{ github.workspace }}/destination-repo
-
