@@ -25,7 +25,7 @@ cd $DEST_REPO_NAME
 
 # Set up git config
 git config user.name "AaronBrennan1"
-git config user.email $EMAIL
+git config user.email aaronbrennan.brennan@gmail.com
 
 # Add, commit and push the file to the destination repository
 git add .
