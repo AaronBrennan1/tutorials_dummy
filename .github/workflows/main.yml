@@ -30,12 +30,25 @@ jobs:
       
       - name: Give execute permission to the script
         run: chmod +x build.sh
+        
+      - name: Give execute permission to the other script  
+        run: chmod +x setup.sh
 
-
+           
       - name: Sync with Destination Repo
         run: |
+          counter=0
           for file in ${{ steps.getfile.outputs.file }}; do
-            ./build.sh AaronBrennan1/cobra_ghpages_dummy ${{ secrets.DEST_REPO_TOKEN }} $file ${{ secrets.EMAIL }}
+            if [ $counter -eq 0 ]
+            then
+              # This is the first iteration, handle the file differently
+              ./setup.sh AaronBrennan1/cobra_ghpages_dummy ${{ secrets.DEST_REPO_TOKEN }} $file ${{ secrets.EMAIL }}
+              ./build.sh AaronBrennan1/cobra_ghpages_dummy ${{ secrets.DEST_REPO_TOKEN }} $file ${{ secrets.EMAIL }}
+            else
+              ./build.sh AaronBrennan1/cobra_ghpages_dummy ${{ secrets.DEST_REPO_TOKEN }} $file ${{ secrets.EMAIL }}
+            fi
+            counter=$((counter+1))
           done
         if: steps.getfile.outputs.file != ''
+
 
