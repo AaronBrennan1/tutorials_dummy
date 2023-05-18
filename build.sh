@@ -2,7 +2,7 @@
 
 DEST_REPO=$1
 DEST_REPO_TOKEN=$2
-FILE_PATHS=$3
+FILE_PATH=$3
 
 # Clone the destination repository
 git clone https://AaronBrennan1:$DEST_REPO_TOKEN@github.com/$DEST_REPO.git
@@ -19,15 +19,13 @@ cd $DEST_REPO_NAME
 git config user.name "GitHub Action"
 git config user.email "action@github.com"
 
-# Iterate over each file path
-printf "%s\n" $FILE_PATHS | while IFS= read -r FILE_PATH
-do
-  # Create the target directory in the destination repository
-  mkdir -p "stable/tutorials/$(dirname "$FILE_PATH")"
 
-  # Copy the file to the target directory in the destination repository
-  cp "../$FILE_PATH" "stable/tutorials/$FILE_PATH"
-done
+# Create the target directory in the destination repository
+mkdir -p "stable/tutorials/$(dirname "$FILE_PATH")"
+
+# Copy the file to the target directory in the destination repository
+cp "../$FILE_PATH" "stable/tutorials/$FILE_PATH"
+
 
 # Add, commit and push the files to the destination repository
 git add .
