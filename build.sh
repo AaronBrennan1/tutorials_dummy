@@ -23,11 +23,12 @@ git config user.email "action@github.com"
 for FILE_PATH in $FILE_PATHS
 do
   # Create the target directory in the destination repository
-  mkdir -p stable/tutorials/$(dirname $FILE_PATH)
-
+  mkdir -p "stable/tutorials/$(dirname "$FILE_PATH")"
+  
   # Copy the file to the target directory in the destination repository
-  cp ../$FILE_PATH stable/tutorials/$FILE_PATH
-done
+  cp "../$FILE_PATH" "stable/tutorials/$FILE_PATH"
+
+ done
 
 # Add, commit and push the files to the destination repository
 git add .
