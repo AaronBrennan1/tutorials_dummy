@@ -20,14 +20,13 @@ git config user.name "GitHub Action"
 git config user.email "action@github.com"
 
 # Iterate over each file path
-for FILE_PATH in $FILE_PATHS
+printf "%s\n" $FILE_PATHS | while IFS= read -r FILE_PATH
 do
   # Create the target directory in the destination repository
   mkdir -p "stable/tutorials/$(dirname "$FILE_PATH")"
-  
+
   # Copy the file to the target directory in the destination repository
   cp "../$FILE_PATH" "stable/tutorials/$FILE_PATH"
-
 done
 
 # Add, commit and push the files to the destination repository
