@@ -7,7 +7,7 @@ EMAIL=$4
 
 # Clone the destination repository
 
-git clone https://AaronBrennan1:$DEST_REPO_TOKENn@github.com/AaronBrennan1/cobra_ghpages_dummy.git
+git clone https://AaronBrennan1:$DEST_REPO_TOKEN@github.com/AaronBrennan1/cobra_ghpages_dummy.git
 
 # Split the destination repository into owner and name
 IFS='/' read -ra ADDR <<< "$DEST_REPO"
