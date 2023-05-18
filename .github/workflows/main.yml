@@ -21,11 +21,11 @@ jobs:
         id: files
         uses: jitterbit/get-changed-files@v1
 
-      - name: Find changed mlx files
+      - name: Find changed files
         id: getfile
         run: |
-          mlx_files=$(echo "${{ steps.files.outputs.all }}" | grep '\.mlx')
-          echo "::set-output name=file::$mlx_files"
+          files=$(echo "${{ steps.files.outputs.all }}" | grep -E '\.(mlx|m|html|pdf)$')
+          echo "::set-output name=file::$files"
       
       
       - name: Give execute permission to the script
