@@ -28,7 +28,7 @@ do
   # Copy the file to the target directory in the destination repository
   cp "../$FILE_PATH" "stable/tutorials/$FILE_PATH"
 
- done
+done
 
 # Add, commit and push the files to the destination repository
 git add .
