@@ -19,7 +19,7 @@ cd $DEST_REPO_NAME
 git config user.name "GitHub Action"
 git config user.email "action@github.com"
 
-git checkout gh_pages
+git checkout gh-pages
 
 # Extract the directory of the first file
 TARGET_DIR="stable/tutorials/$(dirname "$FILE_PATH")"
@@ -34,4 +34,4 @@ rm -rf $TARGET_DIR/*
 # Add, commit and push the files to the destination repository
 git add .
 git commit -m "Sync files from source repo" || echo "No changes to commit"
-git push origin gh_pages
+git push origin gh-pages
