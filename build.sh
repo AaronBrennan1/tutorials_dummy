@@ -19,7 +19,7 @@ cd $DEST_REPO_NAME
 git config user.name "GitHub Action"
 git config user.email "action@github.com"
 
-git checkout gh_pages
+git checkout gh-pages
 
 # Create the target directory in the destination repository
 mkdir -p "stable/tutorials/$(dirname "$FILE_PATH")"
@@ -31,4 +31,4 @@ cp "../$FILE_PATH" "stable/tutorials/$FILE_PATH"
 # Add, commit and push the files to the destination repository
 git add .
 git commit -m "Sync files from source repo" || echo "No changes to commit"
-git push origin gh_pages
+git push origin gh-pages
