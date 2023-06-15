@@ -21,11 +21,14 @@ git config user.email "action@github.com"
 
 git checkout gh-pages
 
-# Create the target directory in the destination repository
-mkdir -p "stable/tutorials/$(dirname "$FILE_PATH")"
+# Extract the directory of the first file
+TARGET_DIR="stable/tutorials/$(dirname "$FILE_PATH")"
 
-# Copy the file to the target directory in the destination repository
-cp "../$FILE_PATH" "stable/tutorials/$FILE_PATH"
+# Create the target directory in the destination repository if it doesn't exist
+mkdir -p $TARGET_DIR
+
+# Delete all contents in the target directory
+rm -rf $TARGET_DIR/*
 
 
 # Add, commit and push the files to the destination repository
